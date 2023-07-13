@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Input, Label } from './ContactForm.styled';
 import { useState } from 'react';
-import { addContact } from 'redux/slice';
 import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 import { nanoid } from '@reduxjs/toolkit';
 
 export function ContactForm({ onSubmit }) {
@@ -35,7 +35,7 @@ export function ContactForm({ onSubmit }) {
       return;
     }
 
-    dispatch(addContact({ name, number, id: nanoid() }));
+    dispatch(addContact({ name, phone: number, id: nanoid() }));
 
     resetForm();
   };
